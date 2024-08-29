@@ -37,7 +37,7 @@ def create_grid(sub_grid: int) -> list[list]:
 def remove_numbers(grid: list[list]) -> None:
     #---- Randomly sets numbers to zeros on the grid ----
     num_of_cells = GRID_SIZE * GRID_SIZE
-    empties = num_of_cells * 3 // 7
+    empties = num_of_cells * 3 // 7 
     for i in sample(range(num_of_cells), empties):
         grid[i // GRID_SIZE][i % GRID_SIZE] = 0
 
@@ -126,20 +126,12 @@ class Grid:
         for y in range(len(self.grid)):
             for x in range(len(self.grid[y])):
                 if self.get_cell(x, y) != 0:
-                    """if (y, x) in self.occupied_cell_coordinates:
-                        text_surface = self.game_font.render(str(self.get_cell(x, y)), False , (0, 200, 255))
-                    else:
-                        text_surface = self.game_font.render(str(self.get_cell(x, y)), False , (0, 255, 0))
-
-                    if self.get_cell(x, y) != self.__test_grid[y][x]:
-                        text_surface = self.game_font.render(str(self.get_cell(x, y)), False, (255, 0, 0))"""
-                    
                     if (y, x) in self.occupied_cell_coordinates:
-                        text_color = (0, 200, 255)  # Pre-filled cells color
+                        text_color = (0, 200, 255)
                     elif (y, x) in self.incorrect_cells:
-                        text_color = (255, 0, 0)  # Incorrect cells color
+                        text_color = (255, 0, 0)
                     else:
-                        text_color = (0, 255, 0)  # Correct cells color
+                        text_color = (0, 255, 0)
 
                     text_surface = self.game_font.render(str(self.get_cell(x, y)), False, text_color)
                     surface.blit(text_surface, (x * self.cell_size + self.num_x_offset, y * self.cell_size + self.num_y_offset))
@@ -165,11 +157,11 @@ class Grid:
             if value == self.__test_grid[y][x]:
                 self.grid[y][x] = value
                 if (y, x) in self.incorrect_cells:
-                    self.incorrect_cells.remove((y, x))  # Remove from incorrect cells if corrected
+                    self.incorrect_cells.remove((y, x))
             else:
                 self.grid[y][x] = value
                 if (y, x) not in self.incorrect_cells:
-                    self.incorrect_cells.append((y, x))  # Mark cell as incorrect
+                    self.incorrect_cells.append((y, x))
 
     def show(self):
         for cell in self.grid:
